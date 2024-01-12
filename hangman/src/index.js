@@ -9,8 +9,7 @@ const humanLegRight = document.querySelector('.human-leg-right');
 
 let partsDrawn = 1;
 
-function test(partsDrawn) {
-  console.log('test!!!');
+function displayPartOfBody(partsDrawn) {
   if (partsDrawn === 1) {
     humanHeads.forEach((humanHead) => {
       humanHead.classList.remove('hidden');
@@ -28,7 +27,6 @@ function test(partsDrawn) {
   }
 }
 
-//
 const url = './src/questions.json';
 let jsonData;
 try {
@@ -38,33 +36,35 @@ try {
     // если HTTP-статус в диапазоне 200-299, получаем тело ответа
     jsonData = await response.json();
   } else {
-    alert('Error1: ' + response.status);
+    alert('Error: ' + response.status);
   }
 } catch (error) {
   // обработка ошибок при запросе
-  alert('Error2: ' + error);
+  alert('Error: ' + error);
 }
-const words = jsonData.map((item) => item.word);
-const word = words[Math.floor(Math.random() * words.length)].toUpperCase();
+const word = jsonData[Math.floor(Math.random() * jsonData.length)];
 let guesses = [];
 let wrongGuesses = [];
 const maxWrongGuesses = 6;
 
-const wordDisplay = document.getElementById('word');
-const wrongGuessesDisplay = document.getElementById('wrongGuesses');
-const statusDisplay = document.getElementById('status');
-const keyboard = document.getElementById('keyboard');
+const wordDisplay = document.querySelector('#word');
+const hintDisplay = document.querySelector('#hint');
+const wrongGuessesDisplay = document.querySelector('#wrongGuesses');
+const statusDisplay = document.querySelector('#status');
+const keyboard = document.querySelector('#keyboard');
 
 function updateDisplay() {
-  wordDisplay.innerHTML = word
+  wordDisplay.innerHTML = word.word
     .split('')
-    .map((letter) => (guesses.includes(letter) ? letter : '_'))
+    .map((letter) => (guesses.includes(letter) ? letter : '__'))
     .join(' ');
+
+  hintDisplay.innerHTML = `Hint: ${word.hint}`;
   wrongGuessesDisplay.innerHTML = wrongGuesses.join(' ');
 }
 
 function checkGuess(guess) {
-  if (word.includes(guess)) {
+  if (word.word.includes(guess)) {
     if (!guesses.includes(guess)) {
       guesses.push(guess);
     }
@@ -78,72 +78,36 @@ function checkGuess(guess) {
 }
 
 function createKeyboard() {
-  const keyboard = document.getElementById('keyboard');
-  const russianLetters = [
-    'А',
-    'Б',
-    'В',
-    'Г',
-    'Д',
-    'Е',
-    'Ё',
-    'Ж',
-    'З',
-    'И',
-    'Й',
-    'К',
-    'Л',
-    'М',
-    'Н',
-    'О',
-    'П',
-    'Р',
-    'С',
-    'Т',
-    'У',
-    'Ф',
-    'Х',
-    'Ц',
-    'Ч',
-    'Ш',
-    'Щ',
-    'Ъ',
-    'Ы',
-    'Ь',
-    'Э',
-    'Ю',
-    'Я',
-  ];
-
-  russianLetters.forEach((letter) => {
+  for (let i = 65; i <= 90; i++) {
     const button = document.createElement('button');
-    button.classList.add('key');
+    const letter = String.fromCharCode(i);
     button.innerHTML = letter;
+    button.classList.add('key');
     button.addEventListener('click', function () {
       button.disabled = true;
-      if (word.includes(letter)) {
+      if (word.word.includes(letter)) {
         button.classList.add('correct');
       } else {
         button.classList.add('incorrect');
-        test(partsDrawn);
+        displayPartOfBody(partsDrawn);
         partsDrawn += 1;
       }
       checkGuess(letter);
     });
     keyboard.appendChild(button);
-  });
+  }
 }
 
 function checkGameStatus() {
   if (wrongGuesses.length >= maxWrongGuesses) {
-    statusDisplay.innerHTML = `Вы проиграли! Было загадано слово: ${word}`;
+    statusDisplay.innerHTML = `You lost! There was a word: ${word.word}`;
     disableKeyboard();
     return;
   }
 
   const isWinner = word.split('').every((letter) => guesses.includes(letter));
   if (isWinner) {
-    statusDisplay.innerHTML = 'Поздравляем! Вы выиграли!';
+    statusDisplay.innerHTML = `Congratulations! You've won!`;
     disableKeyboard();
   }
 }
