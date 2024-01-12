@@ -45,6 +45,7 @@ try {
 const word = jsonData[Math.floor(Math.random() * jsonData.length)];
 let guesses = [];
 let wrongGuesses = [];
+let wrongGuessesCount = 0;
 const maxWrongGuesses = 6;
 
 const wordDisplay = document.querySelector('#word');
@@ -60,7 +61,7 @@ function updateDisplay() {
     .join(' ');
 
   hintDisplay.innerHTML = `Hint: ${word.hint}`;
-  wrongGuessesDisplay.innerHTML = wrongGuesses.join(' ');
+  wrongGuessesDisplay.innerHTML = `${wrongGuessesCount}/6`;
 }
 
 function checkGuess(guess) {
@@ -71,6 +72,7 @@ function checkGuess(guess) {
   } else {
     if (!wrongGuesses.includes(guess)) {
       wrongGuesses.push(guess);
+      wrongGuessesCount += 1;
     }
   }
   updateDisplay();
@@ -105,7 +107,9 @@ function checkGameStatus() {
     return;
   }
 
-  const isWinner = word.split('').every((letter) => guesses.includes(letter));
+  const isWinner = word.word
+    .split('')
+    .every((letter) => guesses.includes(letter));
   if (isWinner) {
     statusDisplay.innerHTML = `Congratulations! You've won!`;
     disableKeyboard();
