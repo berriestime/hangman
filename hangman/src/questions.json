@@ -1,47 +1,47 @@
 [
   {
     "id": 1,
-    "word": "Экватор",
-    "question": "Что делит Землю на северное и южное полушария?"
+    "word": "MOON",
+    "hint": "The natural satellite of Earth."
   },
   {
     "id": 2,
-    "word": "Кварц",
-    "question": "Как называется один из самых распространенных минералов на Земле, используемый в часовой промышленности?"
+    "word": "MERCURY",
+    "hint": "The closest planet to the Sun."
   },
   {
     "id": 3,
-    "word": "Галактика",
-    "question": "Что является большой системой звезд, планет, газа и пыли, связанных гравитацией, к которой относится и наша Солнечная система?"
+    "word": "GALAXY",
+    "hint": "A system of millions or billions of stars, together with gas and dust, held together by gravitational attraction."
   },
   {
     "id": 4,
-    "word": "Шахматы",
-    "question": "Какая стратегическая настольная игра символизирует битву двух армий и включает в себя фигуры, такие как короли, ферзи и пешки?"
+    "word": "SATELLITE",
+    "hint": "A celestial body that orbits a planet; a category of which the Moon is an example."
   },
   {
     "id": 5,
-    "word": "Хлорофилл",
-    "question": "Какое вещество придает растениям зеленый цвет и играет ключевую роль в процессе фотосинтеза?"
+    "word": "STAR",
+    "hint": "A large, glowing ball of gas that generates heat and light through nuclear fusion."
   },
   {
     "id": 6,
-    "word": "Цунами",
-    "question": "Как называется серия волн в океане, вызванных подводными землетрясениями или извержениями вулканов?"
+    "word": "JUPITER",
+    "hint": "The fifth planet from the Sun and the largest in our solar system."
   },
   {
     "id": 7,
-    "word": "Балет",
-    "question": "Какой вид исполнительского искусства сочетает в себе танец и музыку и является символом классической культуры?"
+    "word": "COMET",
+    "hint": "A small icy body that, when passing close to the sun, warms and begins to release gases, a process called outgassing."
   },
   {
     "id": 8,
-    "word": "Алгоритм",
-    "question": "Как называется четко определенная последовательность операций или инструкций для выполнения некоторой задачи или решения проблемы?"
+    "word": "CONSTELLATION",
+    "hint": "A group of stars forming a recognizable pattern that is traditionally named after its apparent form or identified with a mythological figure."
   },
   {
     "id": 9,
-    "word": "Биатлон",
-    "question": "Какой зимний вид спорта сочетает в себе лыжные гонки со стрельбой из ружья на разных дистанциях?"
+    "word": "SATURN",
+    "hint": "The second-largest planet in our solar system, known for its prominent ring system."
   }
 ]
