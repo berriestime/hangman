@@ -1,0 +1,49 @@
+// @import
+// @use
+// @forward
+
+.main-container {
+  display: flex;
+  margin: 1rem;
+}
+
+.main-container__part {
+  width: 50%;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+// [keyboard]
+#word {
+  font-weight: bold;
+}
+
+.key {
+  width: 40px;
+  height: 40px;
+  margin: 2px;
+  background-color: #5455ac;
+  border-radius: 5px;
+  color: white;
+}
+
+.key.correct {
+  background-color: #28a745;
+  color: white;
+}
+
+.key.incorrect {
+  background-color: tomato;
+  color: white;
+}
+
+#status {
+  margin-top: 20px;
+  font-size: 20px;
+}
