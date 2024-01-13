@@ -1,22 +1,26 @@
 import './styles/global.scss';
-// import humanHead from './../assets/human-head.svg';
+import humanHead from './../assets/human-head.svg';
 
-const humanHead = document.querySelectorAll('.human-head');
+// const humanHead = document.querySelectorAll('.human-head');
 const humanBody = document.querySelector('.human-body');
 const humanArmLeft = document.querySelector('.human-arm-left');
 const humanArmRight = document.querySelector('.human-arm-right');
 const humanLegLeft = document.querySelector('.human-leg-left');
 const humanLegRight = document.querySelector('.human-leg-right');
-// const gallows = document.querySelector('.gallows-container');
-
-let partsDrawn = 1;
+const gallows = document.querySelector('.gallows-container');
 
 function displayPartOfBody(partsDrawn) {
+  const bodyPart = document.createElement('img');
+  bodyPart.classList.add('bodypart');
   if (partsDrawn === 1) {
-    humanHead.forEach((humanHead) => {
-      humanHead.classList.remove('hidden');
-    });
-    // gallows.appendChild(humanHead);
+    // {
+    //   humanHead.forEach((humanHead) => {
+    //     humanHead.classList.remove('hidden');
+    //   });
+    {
+      bodyPart.src = humanHead;
+      gallows.appendChild(bodyPart);
+    }
   } else if (partsDrawn === 2) {
     humanBody.classList.remove('hidden');
   } else if (partsDrawn === 3) {
@@ -45,10 +49,10 @@ try {
   // обработка ошибок при запросе
   alert('Error: ' + error);
 }
-const word = jsonData[Math.floor(Math.random() * jsonData.length)];
-let rightGuesses = [];
-let wrongGuesses = [];
-let wrongGuessesCount = 0;
+
+/* above is kek */
+/* Game Constants */
+
 const maxWrongGuesses = 6;
 
 const wordDisplay = document.querySelector('#word');
@@ -56,7 +60,31 @@ const hintDisplay = document.querySelector('#hint');
 const wrongGuessesDisplay = document.querySelector('#wrongGuesses');
 const statusDisplay = document.querySelector('#status');
 const keyboard = document.querySelector('#keyboard');
+const resetButton = document.querySelector('#reset');
 
+/* Game State */
+
+let word = pickRandom(jsonData);
+let rightGuesses = [];
+let wrongGuesses = [];
+let wrongGuessesCount = 0;
+
+/* Game Logic */
+
+function pickRandom(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+function resetGame() {
+  word = pickRandom(jsonData);
+  rightGuesses = [];
+  wrongGuesses = [];
+  wrongGuessesCount = 0;
+
+  clearKeyboard();
+  clearStatus();
+  hideBodyParts();
+  updateDisplay();
+}
 function updateDisplay() {
   wordDisplay.innerHTML = word.word
     .split('')
@@ -64,8 +92,33 @@ function updateDisplay() {
     .join(' ');
 
   hintDisplay.innerHTML = `Hint: ${word.hint}`;
-  wrongGuessesDisplay.innerHTML = `${wrongGuessesCount}/6`;
+  wrongGuessesDisplay.innerHTML = `Incorrect: ${wrongGuessesCount}/6`;
 }
+function initReset() {
+  resetButton.addEventListener('click', resetGame);
+}
+function clearKeyboard() {
+  const buttons = keyboard.querySelectorAll('.key');
+  for (const button of buttons) {
+    button.disabled = false;
+    button.classList.remove('correct');
+    button.classList.remove('incorrect');
+  }
+}
+function hideBodyParts() {
+  const bodyparts = document.querySelectorAll('.bodypart');
+  bodyparts.forEach((x) => x.remove());
+}
+function clearStatus() {
+  statusDisplay.innerHTML = '';
+}
+
+/* Init */
+initReset();
+createKeyboard();
+resetGame();
+
+/* below is kek */
 
 function checkGuess(guess) {
   if (word.word.includes(guess)) {
@@ -74,6 +127,7 @@ function checkGuess(guess) {
     wrongGuesses.push(guess);
     wrongGuessesCount += 1;
   }
+  displayPartOfBody(wrongGuesses.length);
   updateDisplay();
   checkGameStatus();
 }
@@ -90,8 +144,6 @@ function createKeyboard() {
         button.classList.add('correct');
       } else {
         button.classList.add('incorrect');
-        displayPartOfBody(partsDrawn);
-        partsDrawn += 1;
       }
       checkGuess(letter);
     });
@@ -116,11 +168,8 @@ function checkGameStatus() {
 }
 
 function disableKeyboard() {
-  const buttons = keyboard.getElementsByTagName('button');
+  const buttons = keyboard.querySelectorAll('.key');
   for (const button of buttons) {
     button.disabled = true;
   }
 }
-
-createKeyboard();
-updateDisplay();
