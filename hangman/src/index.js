@@ -1,19 +1,22 @@
 import './styles/global.scss';
+// import humanHead from './../assets/human-head.svg';
 
-const humanHeads = document.querySelectorAll('.human-head');
+const humanHead = document.querySelectorAll('.human-head');
 const humanBody = document.querySelector('.human-body');
 const humanArmLeft = document.querySelector('.human-arm-left');
 const humanArmRight = document.querySelector('.human-arm-right');
 const humanLegLeft = document.querySelector('.human-leg-left');
 const humanLegRight = document.querySelector('.human-leg-right');
+// const gallows = document.querySelector('.gallows-container');
 
 let partsDrawn = 1;
 
 function displayPartOfBody(partsDrawn) {
   if (partsDrawn === 1) {
-    humanHeads.forEach((humanHead) => {
+    humanHead.forEach((humanHead) => {
       humanHead.classList.remove('hidden');
     });
+    // gallows.appendChild(humanHead);
   } else if (partsDrawn === 2) {
     humanBody.classList.remove('hidden');
   } else if (partsDrawn === 3) {
@@ -43,7 +46,7 @@ try {
   alert('Error: ' + error);
 }
 const word = jsonData[Math.floor(Math.random() * jsonData.length)];
-let guesses = [];
+let rightGuesses = [];
 let wrongGuesses = [];
 let wrongGuessesCount = 0;
 const maxWrongGuesses = 6;
@@ -57,7 +60,7 @@ const keyboard = document.querySelector('#keyboard');
 function updateDisplay() {
   wordDisplay.innerHTML = word.word
     .split('')
-    .map((letter) => (guesses.includes(letter) ? letter : '__'))
+    .map((letter) => (rightGuesses.includes(letter) ? letter : '__'))
     .join(' ');
 
   hintDisplay.innerHTML = `Hint: ${word.hint}`;
@@ -66,14 +69,10 @@ function updateDisplay() {
 
 function checkGuess(guess) {
   if (word.word.includes(guess)) {
-    if (!guesses.includes(guess)) {
-      guesses.push(guess);
-    }
+    rightGuesses.push(guess);
   } else {
-    if (!wrongGuesses.includes(guess)) {
-      wrongGuesses.push(guess);
-      wrongGuessesCount += 1;
-    }
+    wrongGuesses.push(guess);
+    wrongGuessesCount += 1;
   }
   updateDisplay();
   checkGameStatus();
@@ -109,7 +108,7 @@ function checkGameStatus() {
 
   const isWinner = word.word
     .split('')
-    .every((letter) => guesses.includes(letter));
+    .every((letter) => rightGuesses.includes(letter));
   if (isWinner) {
     statusDisplay.innerHTML = `Congratulations! You've won!`;
     disableKeyboard();
