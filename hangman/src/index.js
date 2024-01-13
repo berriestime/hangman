@@ -198,22 +198,58 @@ function checkGuess(guess) {
   checkGameStatus();
 }
 
+// function createKeyboard() {
+//   for (let i = 65; i <= 90; i++) {
+//     const button = document.createElement('button');
+//     const letter = String.fromCharCode(i);
+//     button.innerHTML = letter;
+//     button.classList.add('key');
+//     button.addEventListener('click', function () {
+//       button.disabled = true;
+//       if (word.word.includes(letter)) {
+//         button.classList.add('correct');
+//       } else {
+//         button.classList.add('incorrect');
+//       }
+//       checkGuess(letter);
+//     });
+//     keyboard.appendChild(button);
+//   }
+// }
+
 function createKeyboard() {
   for (let i = 65; i <= 90; i++) {
     const button = document.createElement('button');
     const letter = String.fromCharCode(i);
     button.innerHTML = letter;
     button.classList.add('key');
+    button.setAttribute('data-key', letter.toLowerCase());
     button.addEventListener('click', function () {
-      button.disabled = true;
-      if (word.word.includes(letter)) {
-        button.classList.add('correct');
-      } else {
-        button.classList.add('incorrect');
-      }
-      checkGuess(letter);
+      handleKeyboardInput(letter);
     });
     keyboard.appendChild(button);
+  }
+
+  document.addEventListener('keydown', function (event) {
+    const letter = event.key;
+    if (letter.length === 1 && letter.match(/[a-z]/i)) {
+      handleKeyboardInput(letter.toUpperCase());
+    }
+  });
+}
+
+function handleKeyboardInput(letter) {
+  const button = document.querySelector(
+    `button[data-key="${letter.toLowerCase()}"]`,
+  );
+  if (button && !button.disabled) {
+    button.disabled = true;
+    if (word.word.includes(letter)) {
+      button.classList.add('correct');
+    } else {
+      button.classList.add('incorrect');
+    }
+    checkGuess(letter);
   }
 }
 
