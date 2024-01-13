@@ -21,6 +21,16 @@ button:hover {
   cursor: pointer;
 }
 
+.gallows-container{
+  position: relative;
+}
+
+.bodypart {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 // [keyboard]
 #word {
   font-weight: bold;

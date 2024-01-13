@@ -1,0 +1,17 @@
+<svg
+  class=""
+  width="500"
+  height="581"
+  viewBox="0 0 500 581"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg">
+  <rect
+    class="human-arm-left"
+    x="335.796"
+    y="250"
+    width="5"
+    height="100"
+    transform="rotate(39.64 335.796 250)"
+    fill="#909090"
+  />
+</svg>

@@ -1,36 +1,40 @@
 import './styles/global.scss';
 import humanHead from './../assets/human-head.svg';
+import humanBody from './../assets/human-body.svg';
+import humanArmLeft from './../assets/human-arm-left.svg';
+import humanArmRight from './../assets/human-arm-right.svg';
+import humanLegLeft from './../assets/human-leg-left.svg';
+import humanLegRight from './../assets/human-leg-right.svg';
 
 // const humanHead = document.querySelectorAll('.human-head');
-const humanBody = document.querySelector('.human-body');
-const humanArmLeft = document.querySelector('.human-arm-left');
-const humanArmRight = document.querySelector('.human-arm-right');
-const humanLegLeft = document.querySelector('.human-leg-left');
-const humanLegRight = document.querySelector('.human-leg-right');
+// const humanBody = document.querySelector('.human-body');
+// const humanArmLeft = document.querySelector('.human-arm-left');
+// const humanArmRight = document.querySelector('.human-arm-right');
+// const humanLegLeft = document.querySelector('.human-leg-left');
+// const humanLegRight = document.querySelector('.human-leg-right');
 const gallows = document.querySelector('.gallows-container');
 
 function displayPartOfBody(partsDrawn) {
   const bodyPart = document.createElement('img');
   bodyPart.classList.add('bodypart');
   if (partsDrawn === 1) {
-    // {
-    //   humanHead.forEach((humanHead) => {
-    //     humanHead.classList.remove('hidden');
-    //   });
-    {
-      bodyPart.src = humanHead;
-      gallows.appendChild(bodyPart);
-    }
+    bodyPart.src = humanHead;
+    gallows.appendChild(bodyPart);
   } else if (partsDrawn === 2) {
-    humanBody.classList.remove('hidden');
+    bodyPart.src = humanBody;
+    gallows.appendChild(bodyPart);
   } else if (partsDrawn === 3) {
-    humanArmLeft.classList.remove('hidden');
+    bodyPart.src = humanArmLeft;
+    gallows.appendChild(bodyPart);
   } else if (partsDrawn === 4) {
-    humanArmRight.classList.remove('hidden');
+    bodyPart.src = humanArmRight;
+    gallows.appendChild(bodyPart);
   } else if (partsDrawn === 5) {
-    humanLegLeft.classList.remove('hidden');
+    bodyPart.src = humanLegLeft;
+    gallows.appendChild(bodyPart);
   } else if (partsDrawn === 6) {
-    humanLegRight.classList.remove('hidden');
+    bodyPart.src = humanLegRight;
+    gallows.appendChild(bodyPart);
   }
 }
 
