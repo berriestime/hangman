@@ -42,6 +42,7 @@ button:hover {
   background-color: #5455ac;
   border-radius: 5px;
   color: white;
+  touch-action: manipulation;
 }
 
 .key.correct {
