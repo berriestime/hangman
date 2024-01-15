@@ -125,7 +125,7 @@ function updateDisplay() {
     .join(' ');
 
   hintDisplay.innerHTML = `Hint: ${word.hint}`;
-  wrongGuessesDisplay.innerHTML = `Incorrect: ${wrongGuessesCount}/6`;
+  wrongGuessesDisplay.innerHTML = `Incorrect: <span class="wrongGuessesCount">${wrongGuessesCount}/6</span>`;
 }
 
 function clearKeyboard() {

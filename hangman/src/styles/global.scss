@@ -63,9 +63,53 @@ button:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  width: 35rem;
 }
 
 // some
 .noscroll {
   overflow: hidden;
 }
+
+.title {
+  text-align: center;
+}
+
+.wrongGuessesCount {
+  color: tomato;
+}
+
+@media screen and (max-width: 1380px) {
+  #keyboard {
+    width: 20rem;
+  }
+
+  .key {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .bodypart {
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+  }
+
+  #gallows-svg {
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+  }
+}
+
+@media screen and (max-width: 630px) {
+  .main-container {
+    flex-direction: column;
+  }
+}
+
+// @media screen and (max-width: 380px) {
+//   .main-container {
+//     flex-direction: column;
+//   }
+// }

@@ -43,5 +43,25 @@
     "id": 9,
     "word": "SATURN",
     "hint": "The second-largest planet in our solar system, known for its prominent ring system."
+  },
+  {
+    "id": 10,
+    "word": "NEBULA",
+    "hint": "What is the first phase in the life cycle of most stars?"
+  },
+  {
+    "id": 11,
+    "word": "NEUTRON",
+    "hint": "What is the densest and hottest type of star in the universe?"
+  },
+  {
+    "id": 12,
+    "word": "MILKYWAY",
+    "hint": "What is the name of our galaxy?"
+  },
+  {
+    "id": 13,
+    "word": "ASTEROID",
+    "hint": "What do we call a small, rocky body that orbits the sun?"
   }
 ]
