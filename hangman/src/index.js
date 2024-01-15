@@ -5,12 +5,11 @@ import humanArmLeft from './../assets/human-arm-left.svg';
 import humanArmRight from './../assets/human-arm-right.svg';
 import humanLegLeft from './../assets/human-leg-left.svg';
 import humanLegRight from './../assets/human-leg-right.svg';
+import jsonData from './questions.json';
 
-// Create main container div
 const mainContainer = document.createElement('div');
 mainContainer.classList.add('main-container');
 
-// Create gallows container
 const gallowsContainer = document.createElement('div');
 gallowsContainer.classList.add('gallows-container');
 gallowsContainer.innerHTML = `
@@ -23,61 +22,49 @@ gallowsContainer.innerHTML = `
       </svg>
     `;
 
-// Create title
 const title = document.createElement('h1');
 title.classList.add('title');
 title.textContent = 'HANGMAN GAME';
 
-// Append gallows and title to the main container part
 const mainContainerPart1 = document.createElement('div');
 mainContainerPart1.classList.add('main-container__part');
 mainContainerPart1.appendChild(gallowsContainer);
 mainContainerPart1.appendChild(title);
 
-// Create game div
 const game = document.createElement('div');
 game.id = 'game';
 
-// Create word to guess paragraph
 const wordToGuess = document.createElement('p');
 wordToGuess.id = 'wordToGuess';
 wordToGuess.innerHTML = '<span id="word"></span>';
 
-// Create hint paragraph
 const hint = document.createElement('p');
 hint.id = 'wordToGuess';
 hint.innerHTML = '<span id="hint"></span>';
 
-// Create guesses paragraph
 const guesses = document.createElement('p');
 guesses.id = 'guesses';
 guesses.innerHTML = '<span id="wrongGuesses"></span>';
 
-// Create status paragraph
 const statusDisplay = document.createElement('p');
 statusDisplay.id = 'status';
 
-// Create keyboard div
 const keyboard = document.createElement('div');
 keyboard.id = 'keyboard';
 
-// Append game elements to the game div
 game.appendChild(wordToGuess);
 game.appendChild(hint);
 game.appendChild(guesses);
 game.appendChild(statusDisplay);
 game.appendChild(keyboard);
 
-// Append game to the main container part
 const mainContainerPart2 = document.createElement('div');
 mainContainerPart2.classList.add('main-container__part');
 mainContainerPart2.appendChild(game);
 
-// Append both parts to the main container
 mainContainer.appendChild(mainContainerPart1);
 mainContainer.appendChild(mainContainerPart2);
 
-// Append the main container to the body
 document.body.appendChild(mainContainer);
 
 const gallows = document.querySelector('.gallows-container');
@@ -106,38 +93,16 @@ function displayPartOfBody(partsDrawn) {
   }
 }
 
-const url = './src/questions.json';
-let jsonData;
-try {
-  let response = await fetch(url);
-
-  if (response.ok) {
-    // если HTTP-статус в диапазоне 200-299, получаем тело ответа
-    jsonData = await response.json();
-  } else {
-    alert('Error: ' + response.status);
-  }
-} catch (error) {
-  // обработка ошибок при запросе
-  alert('Error: ' + error);
-}
-
-/* Game Constants */
-
 const maxWrongGuesses = 6;
 
 const wordDisplay = document.querySelector('#word');
 const hintDisplay = document.querySelector('#hint');
 const wrongGuessesDisplay = document.querySelector('#wrongGuesses');
 
-/* Game State */
-
 let word = pickRandom(jsonData);
 let rightGuesses = [];
 let wrongGuesses = [];
 let wrongGuessesCount = 0;
-
-/* Game Logic */
 
 function pickRandom(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
@@ -179,12 +144,9 @@ function clearStatus() {
   statusDisplay.innerHTML = '';
 }
 
-/* Init */
-
 createKeyboard();
 resetGame();
-
-/* below is just functions */
+console.log(word.word);
 
 function checkGuess(guess) {
   if (word.word.includes(guess)) {
@@ -197,25 +159,6 @@ function checkGuess(guess) {
   updateDisplay();
   checkGameStatus();
 }
-
-// function createKeyboard() {
-//   for (let i = 65; i <= 90; i++) {
-//     const button = document.createElement('button');
-//     const letter = String.fromCharCode(i);
-//     button.innerHTML = letter;
-//     button.classList.add('key');
-//     button.addEventListener('click', function () {
-//       button.disabled = true;
-//       if (word.word.includes(letter)) {
-//         button.classList.add('correct');
-//       } else {
-//         button.classList.add('incorrect');
-//       }
-//       checkGuess(letter);
-//     });
-//     keyboard.appendChild(button);
-//   }
-// }
 
 function createKeyboard() {
   for (let i = 65; i <= 90; i++) {
@@ -260,9 +203,8 @@ function disableKeyboard() {
   }
 }
 
-// Modal
 function showModal(message) {
-  // Создаем фоновый элемент для модального окна
+  document.body.classList.add('noscroll');
   const modalBackdrop = document.createElement('div');
   modalBackdrop.style.position = 'fixed';
   modalBackdrop.style.left = '0';
@@ -275,35 +217,27 @@ function showModal(message) {
   modalBackdrop.style.alignItems = 'center';
   modalBackdrop.style.zIndex = '1000';
 
-  // Создаем контейнер для содержимого модального окна
   const modalContent = document.createElement('div');
   modalContent.style.background = 'white';
   modalContent.style.padding = '20px';
   modalContent.style.borderRadius = '5px';
   modalContent.style.textAlign = 'center';
 
-  // Создаем элемент текста для сообщения
   const modalText = document.createElement('p');
   modalText.textContent = message;
 
-  // Создаем кнопку для закрытия модального окна
   const closeButton = document.createElement('button');
+
   closeButton.id = 'reset';
   closeButton.textContent = 'Start new game';
   closeButton.onclick = function () {
-    // Удаляем модальное окно при нажатии
     document.body.removeChild(modalBackdrop);
     resetGame();
+    console.log(word.word);
   };
-
-  // Добавляем текст и кнопку в контейнер содержимого
   modalContent.appendChild(modalText);
   modalContent.appendChild(closeButton);
-
-  // Добавляем контейнер содержимого в фоновый элемент
   modalBackdrop.appendChild(modalContent);
-
-  // Добавляем модальное окно в body
   document.body.appendChild(modalBackdrop);
 }
 
