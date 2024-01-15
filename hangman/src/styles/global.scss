@@ -93,7 +93,7 @@ button:hover {
 @media screen and (max-width: 1000px) {
   .bodypart {
     width: -webkit-fill-available;
-    height: -webkit-fill-available;
+    height: auto;
   }
 
   #gallows-svg {
