@@ -252,7 +252,7 @@ function checkGameStatus() {
     .split('')
     .every((letter) => rightGuesses.includes(letter));
   if (isWinner) {
-    showModal(`Congratulations! You've won!`);
+    showModal(`Congratulations! You've won! There was a word: ${word.word}`);
     disableKeyboard();
   }
 }
