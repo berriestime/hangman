@@ -44,6 +44,7 @@
   border-radius: 5px;
   color: #EDD0C5;
   touch-action: manipulation;
+  padding: 0px;
 }
 
 .key.correct {
@@ -126,6 +127,16 @@
   background-color: #EDD0C5;
 }
 
+.hint {
+  text-align: center;
+}
+
+#game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 @media screen and (max-width: 1100px) {
   #keyboard {
     width: 28rem;
@@ -156,6 +167,11 @@
 @media screen and (max-width: 710px) {
   .main-container {
     flex-direction: column;
+    margin: 0.5rem;
+  }
+
+  .bodypart {
+    top: 7px;
   }
 
   .main-container__part {
@@ -163,11 +179,11 @@
   }
 
   #keyboard {
-    width: 21rem;
+    width: 23rem;
   }
 
   .key {
-    width: 31px;
+    width: 36px;
     height: 40px;
   }
 

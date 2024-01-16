@@ -33,6 +33,7 @@ const game = document.createElement('div');
 game.id = 'game';
 
 const wordToGuess = document.createElement('p');
+wordToGuess.classList.add('hint');
 const wordSpan = document.createElement('span');
 wordSpan.id = 'word';
 wordToGuess.append(wordSpan);
