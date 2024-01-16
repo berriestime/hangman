@@ -8,6 +8,8 @@ import humanLegRight from './../assets/human-leg-right.svg';
 import gallows from './../assets/gallows.svg';
 import jsonData from './questions.json';
 
+let usedIndices = [];
+
 const mainContainer = document.createElement('div');
 mainContainer.classList.add('main-container');
 
@@ -96,8 +98,25 @@ let wrongGuesses = [];
 let wrongGuessesCount = 0;
 
 function pickRandom(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
+  let index;
+  let attempts = 0;
+
+  do {
+    index = Math.floor(Math.random() * arr.length);
+    attempts++;
+
+    if (attempts > arr.length) {
+      console.log(`All the words have been used. Let's start over.`);
+      usedIndices = [];
+      break;
+    }
+  } while (usedIndices.includes(index));
+
+  usedIndices.push(index);
+
+  return arr[index];
 }
+
 function resetGame() {
   word = pickRandom(jsonData);
   rightGuesses = [];
