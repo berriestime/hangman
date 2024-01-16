@@ -1,7 +1,3 @@
-// @import
-// @use background as './../../assets/background.png';
-// @forward
-
 .main-container {
   display: flex;
   font-family: 'Denk One', sans-serif;
@@ -21,7 +17,7 @@
   cursor: pointer;
 }
 
-.gallows-container{
+.gallows-container {
   position: relative;
 }
 
@@ -42,22 +38,23 @@
   margin: 2px;
   background-color: #536069;
   border-radius: 5px;
-  color: #EDD0C5;
+  color: #edd0c5;
   touch-action: manipulation;
+  padding: 0px;
 }
 
 .key.correct {
-  background-color: #C2C7D6;
+  background-color: #c2c7d6;
   color: white;
 }
 
 .key.incorrect {
-  background-color: #C2C7D6;
+  background-color: #c2c7d6;
   color: white;
 }
 
 .key:not([disabled]):hover {
-  background-color: #647C8C;
+  background-color: #647c8c;
 }
 
 #status {
@@ -102,7 +99,7 @@
 
 .modal-content {
   font-family: 'Denk One', sans-serif;
-  background: #EDD0C5;
+  background: #edd0c5;
   padding: 20px;
   border-radius: 5px;
   text-align: center;
@@ -112,18 +109,29 @@
   font-family: 'Denk One', sans-serif;
   font-size: medium;
   background-color: #536069;
-  color: #EDD0C5;
+  color: #edd0c5;
   padding: 1rem;
-  border-radius: 0.5rem
+  border-radius: 0.5rem;
 }
 
 #reset:hover {
   cursor: pointer;
-  background-color: #647C8C;
+  background-color: #647c8c;
 }
 
 .background {
-  background-color: #EDD0C5;
+  background-color: #edd0c5;
+}
+
+.hint,
+#wordToGuess {
+  text-align: center;
+}
+
+#game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 @media screen and (max-width: 1100px) {
@@ -156,6 +164,11 @@
 @media screen and (max-width: 710px) {
   .main-container {
     flex-direction: column;
+    margin: 0.5rem;
+  }
+
+  .bodypart {
+    top: 7px;
   }
 
   .main-container__part {
@@ -163,11 +176,11 @@
   }
 
   #keyboard {
-    width: 21rem;
+    width: 23rem;
   }
 
   .key {
-    width: 31px;
+    width: 36px;
     height: 40px;
   }
 
@@ -181,6 +194,6 @@
   .title {
     position: absolute;
     font-size: small;
-    background-color: #EDD0C5;
+    background-color: #edd0c5;
   }
 }
