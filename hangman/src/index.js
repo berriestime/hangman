@@ -47,16 +47,12 @@ const guessSpan = document.createElement('span');
 guessSpan.id = 'wrongGuesses';
 guesses.append(guessSpan);
 
-const statusDisplay = document.createElement('p');
-statusDisplay.id = 'status';
-
 const keyboard = document.createElement('div');
 keyboard.id = 'keyboard';
 
 game.append(wordToGuess);
 game.append(hint);
 game.append(guesses);
-game.append(statusDisplay);
 game.append(keyboard);
 
 const mainContainerPart2 = document.createElement('div');
@@ -109,7 +105,6 @@ function resetGame() {
   wrongGuessesCount = 0;
 
   clearKeyboard();
-  clearStatus();
   hideBodyParts();
   updateDisplay();
 }
@@ -139,9 +134,6 @@ function clearKeyboard() {
 function hideBodyParts() {
   const bodyparts = document.querySelectorAll('.bodypart');
   bodyparts.forEach((x) => x.remove());
-}
-function clearStatus() {
-  statusDisplay.textContent = '';
 }
 
 createKeyboard();
