@@ -1,13 +1,14 @@
 import './styles/global.scss';
-import humanHead from './../assets/human-head.svg';
-import humanBody from './../assets/human-body.svg';
-import humanArmLeft from './../assets/human-arm-left.svg';
-import humanArmRight from './../assets/human-arm-right.svg';
-import humanLegLeft from './../assets/human-leg-left.svg';
-import humanLegRight from './../assets/human-leg-right.svg';
-import gallows from './../assets/gallows.svg';
+import humanHead from './../assets/human-head.png';
+import humanBody from './../assets/human-body.png';
+import humanArmLeft from './../assets/human-arm-left.png';
+import humanArmRight from './../assets/human-arm-right.png';
+import humanLegLeft from './../assets/human-leg-left.png';
+import humanLegRight from './../assets/human-leg-right.png';
+import gallows from './../assets/gallows.png';
 import jsonData from './questions.json';
 
+document.body.classList.add('background');
 let usedIndices = [];
 
 const mainContainer = document.createElement('div');
@@ -32,7 +33,6 @@ const game = document.createElement('div');
 game.id = 'game';
 
 const wordToGuess = document.createElement('p');
-wordToGuess.id = 'wordToGuess';
 const wordSpan = document.createElement('span');
 wordSpan.id = 'word';
 wordToGuess.append(wordSpan);
@@ -200,8 +200,10 @@ function handleKeyboardInput(letter) {
     button.disabled = true;
     if (word.word.includes(letter)) {
       button.classList.add('correct');
+      button.disabled;
     } else {
       button.classList.add('incorrect');
+      button.disabled;
     }
     checkGuess(letter);
   }
