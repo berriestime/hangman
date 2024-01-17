@@ -9,6 +9,7 @@ Welcome to the Hangman game repository! This is a digital adaptation of the clas
 - [Features](#features)
 - [Screenshots](#screenshots)
 - [Code Examples](#code-examples)
+- [Status](#status)
 - [Contact](#contact)
 
 ## General Info
@@ -62,6 +63,9 @@ function pickRandom(arr) {
   return arr[index];
 }
 ```
+## Status
+Deploy: https://berriestime.github.io/hangman/hangman/
+
 ## Contact
 
 Created by [@berriestime](https://t.me/berriestime) - feel free to contact me!
