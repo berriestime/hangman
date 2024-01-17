@@ -1,0 +1,67 @@
+[
+  {
+    "id": 1,
+    "word": "MOON",
+    "hint": "The natural satellite of Earth."
+  },
+  {
+    "id": 2,
+    "word": "MERCURY",
+    "hint": "The closest planet to the Sun."
+  },
+  {
+    "id": 3,
+    "word": "GALAXY",
+    "hint": "A system of millions or billions of stars, together with gas and dust, held together by gravitational attraction."
+  },
+  {
+    "id": 4,
+    "word": "SATELLITE",
+    "hint": "A celestial body that orbits a planet; a category of which the Moon is an example."
+  },
+  {
+    "id": 5,
+    "word": "STAR",
+    "hint": "A large, glowing ball of gas that generates heat and light through nuclear fusion."
+  },
+  {
+    "id": 6,
+    "word": "JUPITER",
+    "hint": "The fifth planet from the Sun and the largest in our solar system."
+  },
+  {
+    "id": 7,
+    "word": "COMET",
+    "hint": "A small icy body that, when passing close to the sun, warms and begins to release gases, a process called outgassing."
+  },
+  {
+    "id": 8,
+    "word": "CONSTELLATION",
+    "hint": "A group of stars forming a recognizable pattern that is traditionally named after its apparent form or identified with a mythological figure."
+  },
+  {
+    "id": 9,
+    "word": "SATURN",
+    "hint": "The second-largest planet in our solar system, known for its prominent ring system."
+  },
+  {
+    "id": 10,
+    "word": "NEBULA",
+    "hint": "What is the first phase in the life cycle of most stars?"
+  },
+  {
+    "id": 11,
+    "word": "NEUTRON",
+    "hint": "What is the densest and hottest type of star in the universe?"
+  },
+  {
+    "id": 12,
+    "word": "MILKYWAY",
+    "hint": "What is the name of our galaxy?"
+  },
+  {
+    "id": 13,
+    "word": "ASTEROID",
+    "hint": "What do we call a small, rocky body that orbits the sun?"
+  }
+]

@@ -1,0 +1,209 @@
+.main-container {
+  display: flex;
+  font-family: 'Denk One', sans-serif;
+  justify-content: space-around;
+  margin: 1rem;
+}
+
+.main-container__part {
+  width: 50%;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.key:hover {
+  cursor: pointer;
+}
+
+.gallows-container {
+  position: relative;
+}
+
+.bodypart {
+  position: absolute;
+  top: 15px;
+}
+
+// [keyboard]
+#word {
+  font-weight: bold;
+}
+
+.key {
+  font-family: 'Inter', sans-serif;
+  width: 55px;
+  height: 55px;
+  margin: 2px;
+  background-color: #536069;
+  border-radius: 5px;
+  color: #edd0c5;
+  touch-action: manipulation;
+  padding: 0px;
+}
+
+.key.correct {
+  background-color: #c2c7d6;
+  color: white;
+}
+
+.key.incorrect {
+  background-color: #c2c7d6;
+  color: white;
+}
+
+.key:not([disabled]):hover {
+  background-color: #647c8c;
+}
+
+#status {
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+#keyboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 35rem;
+}
+
+// some
+.noscroll {
+  overflow: hidden;
+}
+
+.title {
+  text-align: center;
+  color: #314170;
+  z-index: 2;
+}
+
+.wrongGuessesCount {
+  color: #314170;
+}
+
+.backdrop {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.modal-content {
+  font-family: 'Denk One', sans-serif;
+  background: #edd0c5;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#reset {
+  font-family: 'Denk One', sans-serif;
+  font-size: medium;
+  background-color: #536069;
+  color: #edd0c5;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+#reset:hover {
+  cursor: pointer;
+  background-color: #647c8c;
+}
+
+.background {
+  background-color: #edd0c5;
+}
+
+.hint,
+#wordToGuess {
+  text-align: center;
+}
+
+#game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hint {
+  text-align: center;
+}
+
+#game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media screen and (max-width: 1100px) {
+  #keyboard {
+    width: 28rem;
+  }
+
+  .key {
+    width: 45px;
+    height: 45px;
+  }
+
+  .gallows-container,
+  .bodypart {
+    width: 20rem;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  #keyboard {
+    width: 23rem;
+  }
+
+  .key {
+    width: 34px;
+    height: 40px;
+  }
+}
+
+@media screen and (max-width: 710px) {
+  .main-container {
+    flex-direction: column;
+    margin: 0.5rem;
+  }
+
+  .bodypart {
+    top: 7px;
+  }
+
+  .main-container__part {
+    width: auto;
+  }
+
+  #keyboard {
+    width: 23rem;
+  }
+
+  .key {
+    width: 36px;
+    height: 40px;
+  }
+
+  .main-container__part,
+  #game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .title {
+    position: absolute;
+    font-size: small;
+    background-color: #edd0c5;
+  }
+}
